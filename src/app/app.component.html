@@ -1,4 +1,31 @@
 <hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<h1>Candidates</h1>
+<input type="checkbox" value="male" name="male" id="male" [(ngModel)]="male" (change)="filter();">
+<label for= "male">Male</label>&nbsp;&nbsp;&nbsp;
+
+<input type="checkbox" value="female" name="female" id="female" [(ngModel)]="female" (change)="filter();">
+<label for= "female">Female</label>&nbsp;&nbsp;&nbsp;
+
+<input type="text" placeholder="What are you looking for" [(ngModel)]="searchtext" (input)="doFilter();">
+
+<table>
+  <th *ngFor="let col of columns" style="width: 30px;">{{col}}</th>
+  <tr *ngFor="let row of filterData">
+    <td style="width: 30px;">{{row.id}}</td>
+    <td style="width: 30px;">{{row.first_name}}</td>
+    <td style="width: 30px;">{{row.last_name}}</td>
+    <td style="width: 30px;">{{row.email}}</td>
+    <td style="width: 30px;">{{row.gender}}</td>
+  </tr>
+</table>
+
+<h1>Add New Candidate</h1>
+
+<input type="text" placeholder="firstName" [(ngModel)]="firstName">
+<input type="text" placeholder="lastname" [(ngModel)]="lastName">
+<input type="email" placeholder="email" [(ngModel)]="email">
+<input type="radio" id = "maleRadio" name="gender"  value="Male" [(ngModel)]="gender">
+<label for= "maleRadio">Male</label>&nbsp;&nbsp;&nbsp;
+<input type="radio" id = "femaleRadio" name="gender"  value="Female" [(ngModel)]="gender">
+<label for= "femaleRadio">Female</label>&nbsp;&nbsp;&nbsp;
+<button type="submit" (click)="addRecord()">Add</button>
